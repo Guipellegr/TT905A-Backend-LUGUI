@@ -35,7 +35,7 @@ app.get('/festas/:id', function(req, res){
         const festa = festas[id];
 
         if (!festa){
-            res.send("Festa não encontrada:!");
+            res.send("Festa não encontrada!");
         } else {
             res.send(festa);
         }
