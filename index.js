@@ -6,43 +6,30 @@ app.use(express.json());
  var cors = require('cors');
  app.use(cors());
 
- //Porta que estou ouvindo
-
- app.listen(process.env.PORT || 3000);
+ app.listen(3000);
 
  app.get('/', function (req, res){
-        res.send("Hello World and Vitor :)");
+        res.send("Hello World!");
      }
  ); 
 
-let mensagens = [
-    {
-       Nome: "Guilherme Pellegrini", Apelido: "Pelegras", Aniversario:"05/12/1998", materia_favorita:"Microcontroladores", Banda:"Vintage Culture"
-    },
-    {
-        Nome: "Lucio Gabriel", Apelido: "Lucinho", Aniversario:"01/05/1994", materia_favorita:"Ondas Guiadas", Banda:"Mário Kart"
-    }
-     
+ app.get('/', function (req, res){
+        res.send("Hello denovo");
+ });
+
+const mensagens = [
+    "Cahorro", "Gato"
 ];
 
-app.get('/mensagens',
-    function(req, res){
-        // res.send(mensagens);
+app.get('/mensagens', function(req, res){
+        //res.send(mensagens);
         res.send(mensagens.filter(Boolean));
     } 
 );
-app.get('/mensagens/:id/:n/',
-    function(req,res){
-        console.log("Oioio");
-        let id = req.params.id - 1;
-        res.send(mensagens[id][req.params.nn]);
-    });
+app.get('/mensagens/:id', function(req, res){
+        const id = req.params.id - 1;
+        const mensagem = mensagens[id];
 
-app.get('/mensagens/:id',
-    function(req, res){
-        let id = req.params.id - 1;
-        let mensagem = mensagens[id];
-        
         if (!mensagem){
             res.send("Mensagem não encontrada");
         } else {
@@ -54,7 +41,7 @@ app.get('/mensagens/:id',
 app.post('/mensagens', 
     (req, res) => {
         console.log(req.body.mensagem);
-        let mensagem = req.body.mensagem;
+        const mensagem = req.body.mensagem;
         mensagens.push(mensagem);
         res.send("criar uma mensagem.")
     }
@@ -62,18 +49,17 @@ app.post('/mensagens',
 
 app.put('/mensagens/:id',
     (req, res) => {
-        let id = req.params.id - 1;
-        let mensagem = req.body.mensagem;
+        const id = req.params.id - 1;
+        const mensagem = req.body.mensagem;
         mensagens[id] = mensagem;        
-        res.send("Mensagem atualizada com sucesso.")
+        res.send("Mensagem atualizada!")
     }
 )
 
 app.delete('/mensagens/:id', 
     (req, res) => {
-        let id = req.params.id - 1;
+        const id = req.params.id - 1;
         delete mensagens[id];
-
         res.send("Mensagem removida com sucesso");
     }
 );
