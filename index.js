@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 app.use(express.json());
 
@@ -27,7 +27,7 @@ const festas = [
 
 app.get('/festas', function(req, res){
         //res.send(mensagens);
-        res.send(mensagens.filter(Boolean));
+        res.send(festas.filter(Boolean));
     } 
 );
 app.get('/festas/:id', function(req, res){
@@ -35,35 +35,36 @@ app.get('/festas/:id', function(req, res){
         const festa = festas[id];
 
         if (!festa){
-            res.send("Festa não encontrada:(");
+            res.send("Festa não encontrada:!");
         } else {
             res.send(festa);
         }
     }
-)
+);
 
 app.post('/festas', 
     (req, res) => {
         console.log(req.body.festa);
         const festa = req.body.festa;
         mensagens.push(festa);
-        res.send("Criar festa!:)")
+        res.send("Criar festa!")
     }
 );
 
 app.put('/festas/:id',
     (req, res) => {
         const id = req.params.id - 1;
+        console.log(req.body.festa);
         const festa = req.body.festa;
         festas[id] = festa;        
-        res.send("Festa atualizada!:)")
+        res.send("Festa atualizada!")
     }
-)
+);
 
 app.delete('/festas/:id', 
     (req, res) => {
         const id = req.params.id - 1;
         delete festas[id];
-        res.send("Festa removida!:(");
+        res.send("Festa removida!");
     }
 );
