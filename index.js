@@ -46,7 +46,7 @@ app.post('/festas',
     (req, res) => {
         console.log(req.body.festa);
         const festa = req.body.festa;
-        festas.push(festa);
+        festas.push(festas);
         res.send("Criar festa!")
     }
 );
