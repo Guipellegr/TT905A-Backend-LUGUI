@@ -17,7 +17,7 @@ app.use(express.json());
         res.send("Hello denovo");
  });
 
-const mensagens = [
+let mensagens = [
     {
         nome: "Guilherme Pellegrini", banda_favorita:"Vintage Culture"
      },
@@ -32,8 +32,8 @@ app.get('/mensagens', function(req, res){
     } 
 );
 app.get('/mensagens/:id', function(req, res){
-        const id = req.params.id - 1;
-        const mensagem = mensagens[id];
+        let id = req.params.id - 1;
+        let mensagem = mensagens[id];
 
         if (!mensagem){
             res.send("Mensagem não encontrada");
@@ -46,7 +46,7 @@ app.get('/mensagens/:id', function(req, res){
 app.post('/mensagens', 
     (req, res) => {
         console.log(req.body.mensagem);
-        const mensagem = req.body.mensagem;
+        let mensagem = req.body.mensagem;
         mensagens.push(mensagem);
         res.send("criar uma mensagem.")
     }
@@ -54,8 +54,8 @@ app.post('/mensagens',
 
 app.put('/mensagens/:id',
     (req, res) => {
-        const id = req.params.id - 1;
-        const mensagem = req.body.mensagem;
+        let id = req.params.id - 1;
+        let mensagem = req.body.mensagem;
         mensagens[id] = mensagem;        
         res.send("Mensagem atualizada!")
     }
@@ -63,7 +63,7 @@ app.put('/mensagens/:id',
 
 app.delete('/mensagens/:id', 
     (req, res) => {
-        const id = req.params.id - 1;
+        let id = req.params.id - 1;
         delete mensagens[id];
         res.send("Mensagem removida com sucesso");
     }
