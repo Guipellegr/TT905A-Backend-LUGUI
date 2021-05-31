@@ -17,7 +17,7 @@ app.use(express.json());
         res.send("Hello denovo!");
  });
 
-const festa = [
+const festas = [
     {nome: "TUSCA", organizador:"UFSCAR e USP São Carlos"},
     {nome: "Amnésia", orgnizador:"AAAMEC UNICAMP"},
     {nome: "Espuma", orgnizador:"AAAXO UNICAMP Limeira"},
