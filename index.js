@@ -22,7 +22,7 @@ let mensagens = [
         nome: "Guilherme Pellegrini", banda_favorita:"Vintage Culture"
      },
      {
-        nome: "Lucio Gabriel", banda_favorita:"Civilization 6"
+        nome: "Lucio Gabriel", banda_favorita:"ONEREPUCLIC"
      }
 ];
 
