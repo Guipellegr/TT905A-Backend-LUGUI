@@ -22,6 +22,7 @@ const festas = [
     {nome: "Amnésia", orgnizador:"AAAMEC UNICAMP"},
     {nome: "Espuma", orgnizador:"AAAXO UNICAMP Limeira"},
     {nome: "Semáforo", orgnizador:"AAAETA UNICAMP Limeira"},
+    {nome: "Fea Fantasy", orgnizador:"AAAFEA UNICAMP"},
 ]
 
 app.get('/festas', function(req, res){
