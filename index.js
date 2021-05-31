@@ -22,7 +22,6 @@ const festas = [
     {nome: "Amnésia", orgnizador:"AAAMEC UNICAMP"},
     {nome: "Espuma", orgnizador:"AAAXO UNICAMP Limeira"},
     {nome: "Semáforo", orgnizador:"AAAETA UNICAMP Limeira"},
-    {nome: "Fea Fantasy", orgnizador:"AAAFEA UNICAMP"},
 ]
 
 app.get('/festas', function(req, res){
@@ -46,7 +45,7 @@ app.post('/festas',
     (req, res) => {
         console.log(req.body.festa);
         const festa = req.body.festa;
-        festas.push(festas);
+        festas.push(festa);
         res.send("Criar festa!")
     }
 );
