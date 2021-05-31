@@ -18,7 +18,12 @@ app.use(express.json());
  });
 
 const mensagens = [
-    "Cahorro", "Gato"
+    {
+        nome: "Guilherme Pellegrini", banda_favorita:"Vintage Culture"
+     },
+     {
+        nome: "Lucio Gabriel", banda_favorita:"Civilization 6"
+     }
 ];
 
 app.get('/mensagens', function(req, res){
