@@ -14,57 +14,56 @@ app.use(express.json());
  ); 
 
  app.get('/', function (req, res){
-        res.send("Hello denovo");
+        res.send("Hello denovo!");
  });
 
-let mensagens = [
-    {
-        nome: "Guilherme Pellegrini", banda_favorita:"Vintage Culture"
-     },
-     {
-        nome: "Lucio Gabriel", banda_favorita:"ONEREPUCLIC"
-     }
+const festa = [
+    {nome: "TUSCA", organizador:"UFSCAR e USP São Carlos"},
+    {nome: "Amnésia", orgnizador:"AAAMEC UNICAMP"},
+    {nome: "Espuma", orgnizador:"AAAXO UNICAMP Limeira"},
+    {nome: "Semáforo", orgnizador:"AAAETA UNICAMP Limeira"},
+    {nome: "Fea Fantasy", orgnizador:"AAAFEA UNICAMP"},
 ];
 
-app.get('/mensagens', function(req, res){
+app.get('/festas', function(req, res){
         //res.send(mensagens);
         res.send(mensagens.filter(Boolean));
     } 
 );
-app.get('/mensagens/:id', function(req, res){
-        let id = req.params.id - 1;
-        let mensagem = mensagens[id];
+app.get('/festas/:id', function(req, res){
+        const id = req.params.id - 1;
+        const festa = festas[id];
 
-        if (!mensagem){
-            res.send("Mensagem não encontrada");
+        if (!festa){
+            res.send("Festa não encontrada:(");
         } else {
-            res.send(mensagem);
+            res.send(festa);
         }
     }
 )
 
-app.post('/mensagens', 
+app.post('/festas', 
     (req, res) => {
-        console.log(req.body.mensagem);
-        let mensagem = req.body.mensagem;
-        mensagens.push(mensagem);
-        res.send("criar uma mensagem.")
+        console.log(req.body.festa);
+        const festa = req.body.festa;
+        mensagens.push(festa);
+        res.send("Criar festa!:)")
     }
 );
 
-app.put('/mensagens/:id',
+app.put('/festas/:id',
     (req, res) => {
-        let id = req.params.id - 1;
-        let mensagem = req.body.mensagem;
-        mensagens[id] = mensagem;        
-        res.send("Mensagem atualizada!")
+        const id = req.params.id - 1;
+        const festa = req.body.festa;
+        festas[id] = festa;        
+        res.send("Festa atualizada!:)")
     }
 )
 
-app.delete('/mensagens/:id', 
+app.delete('/festas/:id', 
     (req, res) => {
-        let id = req.params.id - 1;
-        delete mensagens[id];
-        res.send("Mensagem removida com sucesso");
+        const id = req.params.id - 1;
+        delete festas[id];
+        res.send("Festa removida!:(");
     }
 );
